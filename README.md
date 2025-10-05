@@ -38,8 +38,8 @@ This tool bridges **software engineering** and **cybersecurity auditing**, provi
 | :--- | :--- |
 | **Language** | Python 3.10+ |
 | **Static Analysis** | Androguard, APKTool |
-| **Machine Learning** | Scikit-learn, Pandas, NumPy |
-| **Visualization** | Streamlit, Matplotlib |
+| **Machine Learning** | Scikit-learn |
+| **Visualization** | Streamlit |
 | **Reporting** | ReportLab |
 | **Storage / Deployment** | Local File System or AWS S3 (optional) |
 
@@ -69,7 +69,7 @@ APK File
 ## Installation
 
 ```bash
-git clone https://github.com/peaceolad/android-privacy-risk-analyzer.git
+git clone https://github.com/AyomidePeat/Android-Privacy-Risk-Analyze.git
 cd android-privacy-risk-analyzer
 pip install -r requirements.txt
 ```
@@ -87,18 +87,15 @@ python analyze_apk.py samples/test_app.apk
 **Output Example**
 
 ```
-[INFO] Scanning APK...
-[INFO] Extracted 11 permissions
-[INFO] Detected 3 high-risk APIs (Network, Storage, Location)
-[INFO] Privacy Risk Score: 78 (High Risk)
-[INFO] Report saved: reports/test_app_report.pdf
+[INFO] Analyzing test.apk ...
+Analyzing test.apk ...
+Analyzing xender.apk ...
+Analyzing libretorrent_9000333.apk ...
+Analysis complete. Saved to output/risk_summary.csv
+Chart saved to output/risk_chart.png
+Clustering complete. Plot saved at output/clusters.png
 ```
 
-### 2. Launch the Dashboard
-
-```bash
-streamlit run dashboard.py
-```
 
 The dashboard visualizes:
 
@@ -139,6 +136,9 @@ android_privacy_risk_analyzer/
 ├── utils/                      # Helper functions and parsers
 ├── samples/                    # Sample APKs for testing
 ├── reports/                    # Generated reports
+├── outputs/                    # Generated outputs
+├── train_model.py             
+├── risk_levels.json            # risk levels
 └── requirements.txt            # Dependencies
 ```
 
@@ -149,8 +149,7 @@ android_privacy_risk_analyzer/
 1. Drop an APK file into the `samples/` directory
 2. Run the analysis command
 3. Review console output for summary
-4. Open the generated PDF report
-5. Optionally visualize all results in the Streamlit dashboard
+4. Open the generated  report
 
 This end-to-end pipeline allows developers and analysts to assess privacy risks efficiently in both single-app and batch-audit modes.
 

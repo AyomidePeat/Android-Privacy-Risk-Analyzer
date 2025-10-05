@@ -27,7 +27,7 @@ This tool bridges **software engineering** and **cybersecurity auditing**, provi
 | **Risk Scoring** | **Automated Privacy Scoring** | Assigns each application a quantitative risk score based on detected vulnerabilities. |
 | **Machine Learning** | **Unsupervised Pattern Clustering** | Uses clustering algorithms to group apps with similar risk characteristics. |
 | **Reporting** | **Automated PDF Reports** | Generates comprehensive reports summarizing detected issues, severity, and recommendations. |
-| **Visualization** | **Streamlit Dashboard** | Interactive dashboard for visualizing privacy risk distributions, trends, and performance metrics. |
+
 | **Scalability** | **Batch Analysis Support** | Enables scanning of multiple APKs for enterprise-scale assessment. |
 
 ---

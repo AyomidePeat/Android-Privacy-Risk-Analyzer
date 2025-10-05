@@ -1,0 +1,16 @@
+{
+    "android.permission.INTERNET": "Low",
+    "android.permission.ACCESS_FINE_LOCATION": "High",
+    "android.permission.ACCESS_COARSE_LOCATION": "High",
+    "android.permission.READ_CONTACTS": "High",
+    "android.permission.WRITE_CONTACTS": "High",
+    "android.permission.READ_SMS": "High",
+    "android.permission.SEND_SMS": "High",
+    "android.permission.CAMERA": "Medium",
+    "android.permission.RECORD_AUDIO": "High",
+    "android.permission.READ_EXTERNAL_STORAGE": "Medium",
+    "android.permission.WRITE_EXTERNAL_STORAGE": "Medium",
+    "android.permission.BLUETOOTH": "Low",
+    "android.permission.VIBRATE": "Low"
+  }
+  

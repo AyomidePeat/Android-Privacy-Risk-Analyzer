@@ -1,0 +1,7 @@
+androguard==3.4.0a1
+pandas
+matplotlib
+seaborn
+scikit-learn
+joblib
+reportlab

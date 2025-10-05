@@ -1,0 +1,38 @@
+import pandas as pd
+from sklearn.preprocessing import MultiLabelBinarizer
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import classification_report
+import joblib
+import ast
+import os
+
+data_path = "output/risk_summary.csv"
+output_folder = "output"
+os.makedirs(output_folder, exist_ok=True)
+
+df = pd.read_csv(data_path)
+
+# Group permissions per APK
+grouped = df.groupby("APK")["Permission"].apply(list).reset_index()
+risk_map = df.groupby("APK")["RiskLevel"].apply(lambda x: x.mode()[0]).reset_index()
+merged = pd.merge(grouped, risk_map, on="APK")
+
+# Convert permissions to binary features
+mlb = MultiLabelBinarizer()
+X = mlb.fit_transform(merged["Permission"])
+y = merged["RiskLevel"]
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+model = RandomForestClassifier(n_estimators=100, random_state=42)
+model.fit(X_train, y_train)
+
+preds = model.predict(X_test)
+print("✅ Model Performance:\n")
+print(classification_report(y_test, preds))
+
+# Save model and encoder
+joblib.dump(model, os.path.join(output_folder, "risk_model.pkl"))
+joblib.dump(mlb, os.path.join(output_folder, "permission_encoder.pkl"))
+print("🧠 Model and encoder saved to /output/")

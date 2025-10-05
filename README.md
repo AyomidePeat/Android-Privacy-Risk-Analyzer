@@ -39,7 +39,6 @@ This tool bridges **software engineering** and **cybersecurity auditing**, provi
 | **Language** | Python 3.10+ |
 | **Static Analysis** | Androguard, APKTool |
 | **Machine Learning** | Scikit-learn |
-| **Visualization** | Streamlit |
 | **Reporting** | ReportLab |
 | **Storage / Deployment** | Local File System or AWS S3 (optional) |
 
@@ -78,10 +77,14 @@ pip install -r requirements.txt
 
 ## Usage
 
-### 1. Analyze a Single APK
+### 1. Analyze APK
 
 ```bash
-python analyze_apk.py samples/test_app.apk
+python train_model.py
+python analyze_apks.py
+python classify_new_apk.py --apk samples/test_app.apk
+python clustering_analysis.py
+python generate_report.py
 ```
 
 **Output Example**

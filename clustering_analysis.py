@@ -1,4 +1,3 @@
-# clustering_analysis.py
 from androguard.core.bytecodes.apk import APK
 from sklearn.preprocessing import MultiLabelBinarizer
 from sklearn.decomposition import PCA
@@ -24,7 +23,6 @@ def run_clustering(apk_data, n_clusters=3):
     mlb = MultiLabelBinarizer()
     X = mlb.fit_transform([a["permissions"] for a in apk_data])
 
-    # Dimensionality reduction for visualization
     X_reduced = PCA(n_components=2).fit_transform(X)
 
     kmeans = KMeans(n_clusters=n_clusters, random_state=42)
@@ -45,7 +43,7 @@ def run_clustering(apk_data, n_clusters=3):
     plt.tight_layout()
     plt.savefig("output/clusters.png")
     plt.close()
-    print("✅ Clustering complete. Plot saved at output/clusters.png")
+    print(" Clustering complete. Plot saved at output/clusters.png")
 
     return df, labels
 

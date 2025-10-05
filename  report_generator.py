@@ -7,15 +7,12 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, Tabl
 from reportlab.lib.styles import getSampleStyleSheet
 import os
 
-# Paths
 input_csv = "output/risk_summary.csv"
 output_folder = "output"
 pdf_file = os.path.join(output_folder, "Privacy_Risk_Report.pdf")
 
-# Load data
 df = pd.read_csv(input_csv)
 
-# Compute per-app risk summary
 summary = df.groupby(["APK", "RiskLevel"]).size().unstack(fill_value=0)
 summary["Total"] = summary.sum(axis=1)
 summary["High%"] = (summary.get("High", 0) / summary["Total"] * 100).round(1)
@@ -49,7 +46,6 @@ story.append(Spacer(1, 20))
 story.append(Paragraph("<b>Per-App Privacy Summary</b>", styles["Heading2"]))
 story.append(Spacer(1, 12))
 
-# Add table
 data = [summary.reset_index().columns.tolist()] + summary.reset_index().values.tolist()
 table = Table(data)
 table.setStyle(TableStyle([
@@ -71,4 +67,4 @@ story.append(Spacer(1, 10))
 story.append(Paragraph("© 2025 OLADIPUPO PEACE", styles["Normal"]))
 
 doc.build(story)
-print(f"✅ Privacy risk report generated: {pdf_file}")
+print(f" Privacy risk report generated: {pdf_file}")
